@@ -1,7 +1,11 @@
 package com.poo.desafio;
 
+import com.poo.desafio.exceptions.DescontoInvalidoException;
+
 public class Main {
     public static void main(String[] args) {
+        // Teste da atividade 1
+        System.out.println("===============Teste da atividade 1===============");
         // Criando instância válida
         Produto p1 = new Produto("Carro Gol", 45000.00, 5);
         System.out.println(p1);
@@ -35,6 +39,40 @@ public class Main {
             Produto p2 = new Produto(null, 100, 5);
         } catch (IllegalArgumentException e) {
             System.out.println("Erro ao criar produto: " + e.getMessage());
+        }
+
+
+        // Teste da atividade 2
+        System.out.println("===============Teste da atividade 2===============");
+        System.out.println("Preço original: " + p1.getPreco());
+
+        // Aplicando desconto válido
+        try {
+            p1.aplicarDesconto(10); // 10%
+            System.out.println("Preço após 10% de desconto: " + p1.getPreco());
+        } catch (DescontoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Tentativa de desconto inválido: 0%
+        try {
+            p1.aplicarDesconto(0);
+        } catch (DescontoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Tentativa de desconto inválido: maior que 50%
+        try {
+            p1.aplicarDesconto(60);
+        } catch (DescontoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Tentativa de desconto inválido: negativo
+        try {
+            p1.aplicarDesconto(-5);
+        } catch (DescontoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.poo.desafio;
 
+import com.poo.desafio.exceptions.DescontoInvalidoException;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -42,6 +44,15 @@ public class Produto {
             throw new IllegalArgumentException("A quantidade em estoque não pode ser negativa.");
         }
         this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    public void aplicarDesconto(double porcentagem){
+        if(porcentagem <= 0 || porcentagem > 50){
+            throw new DescontoInvalidoException("O desconto não pode ser negativa, zero ou maior do que 50.");
+        }
+        double desconto = getPreco() * (porcentagem / 100);
+        double precoComDesconto = getPreco() - desconto;
+        setPreco(precoComDesconto);
     }
 
     @Override
