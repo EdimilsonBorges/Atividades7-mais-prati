@@ -2,6 +2,10 @@ package com.poo.desafio;
 
 import com.poo.desafio.exceptions.DescontoInvalidoException;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         // Teste da atividade 1
@@ -73,6 +77,18 @@ public class Main {
             p1.aplicarDesconto(-5);
         } catch (DescontoInvalidoException e) {
             System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Teste da atividade 3
+        System.out.println("===============Teste da atividade 3===============");
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        funcionarios.add(new Gerente("Pedro", new BigDecimal("50000")));
+        funcionarios.add(new Desenvolvedor("Maria", new BigDecimal("3000")));
+        funcionarios.add(new Desenvolvedor("Miguel", new BigDecimal("4500")));
+
+        for (Funcionario f : funcionarios) {
+            System.out.println(f.getNome() + " | Salário: " + f.getSalario() + " | Bônus: " + f.calcularBonus());
         }
     }
 }
