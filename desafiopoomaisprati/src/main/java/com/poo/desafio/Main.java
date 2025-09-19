@@ -5,6 +5,8 @@ import com.poo.desafio.exceptions.DescontoInvalidoException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.poo.desafio.exceptions.PagamentoInvalidoException;
 import com.poo.desafio.exceptions.VelocidadeInvalidaException;
 
 public class Main {
@@ -109,6 +111,23 @@ public class Main {
             } catch (VelocidadeInvalidaException e) {
                 System.out.println("Erro: " + e.getMessage());
             }
+        }
+
+        // Teste da atividade 5
+        System.out.println("===============Teste da atividade 5===============");
+        List<FormaPagamento> pagamentos = new ArrayList<>();
+        pagamentos.add(new CartaoCredito("7654890312437890"));
+        pagamentos.add(new Boleto("26745895612873495670932146785643659809765128635"));
+        pagamentos.add(new Pix("usuario@email.com"));
+        pagamentos.add(new CartaoCredito("5342")); // inválido
+
+        for (FormaPagamento pagamento : pagamentos) {
+            try {
+                pagamento.processarPagamento(new BigDecimal("150.00"));
+            } catch (PagamentoInvalidoException e) {
+                System.out.println("Erro no pagamento: " + e.getMessage());
+            }
+            System.out.println("-------------------");
         }
     }
 }
