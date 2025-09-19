@@ -5,6 +5,7 @@ import com.poo.desafio.exceptions.DescontoInvalidoException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import com.poo.desafio.exceptions.VelocidadeInvalidaException;
 
 public class Main {
     public static void main(String[] args) {
@@ -89,6 +90,25 @@ public class Main {
 
         for (Funcionario f : funcionarios) {
             System.out.println(f.getNome() + " | Salário: " + f.getSalario() + " | Bônus: " + f.calcularBonus());
+        }
+
+        // Teste da atividade 4
+        System.out.println("===============Teste da atividade 4===============");
+        List<IMeioTransporte> transportes = new ArrayList<>();
+        transportes.add(new Carro());
+        transportes.add(new Bicicleta());
+        transportes.add(new Trem());
+
+        for (IMeioTransporte t : transportes) {
+            try {
+                System.out.println("=== " + t.getNome() + " ===");
+                t.acelerar();
+                System.out.println("Velocidade após acelerar: " + t.getVelocidade() + " km/h");
+                t.frear();
+                System.out.println("Velocidade após frear: " + t.getVelocidade() + " km/h\n");
+            } catch (VelocidadeInvalidaException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
         }
     }
 }
