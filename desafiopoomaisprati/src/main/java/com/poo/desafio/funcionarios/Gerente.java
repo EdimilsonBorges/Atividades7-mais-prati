@@ -1,4 +1,4 @@
-package com.poo.desafio;
+package com.poo.desafio.funcionarios;
 
 import java.math.BigDecimal;
 

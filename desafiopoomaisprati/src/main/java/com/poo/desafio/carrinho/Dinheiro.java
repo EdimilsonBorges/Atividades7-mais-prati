@@ -1,10 +1,10 @@
-package com.poo.desafio;
+package com.poo.desafio.carrinho;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
 
-final class Dinheiro {
+public final class Dinheiro {
     private final BigDecimal valor;
     private final Moeda moeda;
 

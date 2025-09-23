@@ -1,8 +1,8 @@
-package com.poo.desafio;
+package com.poo.desafio.transporte;
 
 import com.poo.desafio.exceptions.VelocidadeInvalidaException;
 
-public class Trem implements IMeioTransporte{
+public class Trem implements IMeioTransporte {
     private int velocidade = 0;
     private final int MAX_VELOCIDADE = 300;
 

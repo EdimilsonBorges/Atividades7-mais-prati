@@ -1,4 +1,4 @@
-package com.poo.desafio;
+package com.poo.desafio.transporte;
 
 import com.poo.desafio.exceptions.VelocidadeInvalidaException;
 

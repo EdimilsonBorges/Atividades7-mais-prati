@@ -1,10 +1,10 @@
-package com.poo.desafio;
+package com.poo.desafio.pagamento;
 
 import com.poo.desafio.exceptions.PagamentoInvalidoException;
 
 import java.math.BigDecimal;
 
-class Boleto extends FormaPagamento {
+public class Boleto extends FormaPagamento {
     private String codigoBarras;
 
     public Boleto(String codigoBarras) {

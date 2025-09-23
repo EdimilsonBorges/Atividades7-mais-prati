@@ -1,10 +1,9 @@
-package com.poo.desafio;
+package com.poo.desafio.pagamento;
 
 import com.poo.desafio.exceptions.PagamentoInvalidoException;
-
 import java.math.BigDecimal;
 
-class CartaoCredito extends FormaPagamento {
+public class CartaoCredito extends FormaPagamento {
     private String numeroCartao;
 
     public CartaoCredito(String numeroCartao) {

@@ -1,5 +1,6 @@
-package com.poo.desafio;
+package com.poo.desafio.carrinho;
 
+import com.poo.desafio.produto.Produto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;

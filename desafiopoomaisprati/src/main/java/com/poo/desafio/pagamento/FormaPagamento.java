@@ -1,10 +1,10 @@
-package com.poo.desafio;
+package com.poo.desafio.pagamento;
 
 import com.poo.desafio.exceptions.PagamentoInvalidoException;
 
 import java.math.BigDecimal;
 
-abstract class FormaPagamento {
+public abstract class FormaPagamento {
     public abstract void validarPagamento() throws PagamentoInvalidoException;
     public abstract void processarPagamento(BigDecimal valor) throws PagamentoInvalidoException;
 }

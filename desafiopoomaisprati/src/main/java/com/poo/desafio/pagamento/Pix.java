@@ -1,10 +1,10 @@
-package com.poo.desafio;
+package com.poo.desafio.pagamento;
 
 import com.poo.desafio.exceptions.PagamentoInvalidoException;
 
 import java.math.BigDecimal;
 
-class Pix extends FormaPagamento {
+public class Pix extends FormaPagamento {
     private String chavePix;
 
     public Pix(String chavePix) {

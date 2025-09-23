@@ -1,7 +1,6 @@
-package com.poo.desafio;
+package com.poo.desafio.repositorio;
 
 import com.poo.desafio.exceptions.EntidadeNaoEncontradaException;
-
 import java.util.*;
 
 public class InMemoryRepository<T extends Identificavel<ID>, ID> implements IRepository<T, ID> {

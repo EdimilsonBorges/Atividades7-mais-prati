@@ -1,6 +1,8 @@
-package com.poo.desafio;
+package com.poo.desafio.carrinho;
 
-class ItemCarrinho {
+import com.poo.desafio.produto.Produto;
+
+public class ItemCarrinho {
     private final Produto produto;
     private final int quantidade;
 

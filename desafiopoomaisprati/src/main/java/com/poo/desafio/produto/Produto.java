@@ -1,6 +1,8 @@
-package com.poo.desafio;
+package com.poo.desafio.produto;
 
+import com.poo.desafio.carrinho.Dinheiro;
 import com.poo.desafio.exceptions.DescontoInvalidoException;
+import com.poo.desafio.repositorio.Identificavel;
 
 public class Produto implements Identificavel<Integer> {
     private String nome;

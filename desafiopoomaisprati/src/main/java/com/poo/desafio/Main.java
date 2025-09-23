@@ -1,14 +1,33 @@
 package com.poo.desafio;
 
+import com.poo.desafio.carrinho.Carrinho;
+import com.poo.desafio.carrinho.Dinheiro;
+import com.poo.desafio.carrinho.Moeda;
 import com.poo.desafio.exceptions.DescontoInvalidoException;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.poo.desafio.exceptions.EntidadeNaoEncontradaException;
 import com.poo.desafio.exceptions.PagamentoInvalidoException;
 import com.poo.desafio.exceptions.VelocidadeInvalidaException;
+import com.poo.desafio.frete.Pac;
+import com.poo.desafio.frete.Pedido;
+import com.poo.desafio.frete.RetiradaNaLoja;
+import com.poo.desafio.frete.Sedex;
+import com.poo.desafio.funcionarios.Desenvolvedor;
+import com.poo.desafio.funcionarios.Funcionario;
+import com.poo.desafio.funcionarios.Gerente;
+import com.poo.desafio.pagamento.Boleto;
+import com.poo.desafio.pagamento.CartaoCredito;
+import com.poo.desafio.pagamento.FormaPagamento;
+import com.poo.desafio.pagamento.Pix;
+import com.poo.desafio.produto.Produto;
+import com.poo.desafio.repositorio.IRepository;
+import com.poo.desafio.repositorio.InMemoryRepository;
+import com.poo.desafio.transporte.Bicicleta;
+import com.poo.desafio.transporte.Carro;
+import com.poo.desafio.transporte.IMeioTransporte;
+import com.poo.desafio.transporte.Trem;
 
 public class Main {
     public static void main(String[] args) {
@@ -144,7 +163,7 @@ public class Main {
 
         System.out.println("Carrinho inicial:");
         carrinho.getItens().forEach(i ->
-                System.out.println(i.getProduto().getNome() + " x" + i.getQuantidade() + " = " + i.getTotal())
+                System.out.println(i.getProduto() + " x" + i.getQuantidade() + " = " + i.getTotal())
         );
         System.out.println("Total: " + carrinho.getTotal());
 
@@ -193,5 +212,41 @@ public class Main {
         } catch (EntidadeNaoEncontradaException e) {
             System.out.println("Erro: " + e.getMessage());
         }
+
+        // Teste da atividade 8
+        System.out.println("===============Teste da atividade 8===============");
+
+        Pedido pedido = new Pedido("P001", "12345678", BigDecimal.valueOf(200), new Sedex());
+        System.out.println("Usando Sedex: " + pedido);
+
+        // Troca de estratégia em runtime
+        pedido.setEstrategiaFrete(new Pac());
+        System.out.println("Trocado para PAC: " + pedido);
+
+        pedido.setEstrategiaFrete(new RetiradaNaLoja());
+        System.out.println("Trocado para Retirada na Loja: " + pedido);
+
+        // Estratégia promocional via lambda
+        pedido.setEstrategiaFrete(p -> {
+            if (p.getValorTotal().compareTo(BigDecimal.valueOf(300)) >= 0) {
+                return BigDecimal.ZERO; // frete grátis
+            }
+            return BigDecimal.valueOf(20); // valor padrão
+        });
+        System.out.println("Frete promocional (frete grátis acima de 300): " + pedido);
+
+        // Testando com pedido mais caro
+        Pedido pedido2 = new Pedido("P002", "87654321", BigDecimal.valueOf(500),
+                p -> p.getValorTotal().compareTo(BigDecimal.valueOf(300)) >= 0 ? BigDecimal.ZERO : BigDecimal.valueOf(20));
+        System.out.println("Pedido 2: " + pedido2);
+
+        // Testando CEP inválido
+        try {
+            Pedido pedidoInvalido = new Pedido("P003", "abc123", BigDecimal.valueOf(100), new Sedex());
+            System.out.println(pedidoInvalido.calcularFrete());
+        } catch (Exception e) {
+            System.err.println("Erro ao calcular frete: " + e.getMessage());
+        }
+
     }
 }

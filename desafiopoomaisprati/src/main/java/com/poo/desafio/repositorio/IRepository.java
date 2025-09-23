@@ -1,11 +1,11 @@
-package com.poo.desafio;
+package com.poo.desafio.repositorio;
 
 import com.poo.desafio.exceptions.EntidadeNaoEncontradaException;
 
 import java.util.List;
 import java.util.Optional;
 
-interface IRepository<T extends Identificavel<ID>, ID> {
+public interface IRepository<T extends Identificavel<ID>, ID> {
     T salvar(T entidade);
     Optional<T> buscarPorId(ID id);
     List<T> listarTodos();
