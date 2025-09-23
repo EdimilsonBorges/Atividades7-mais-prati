@@ -14,7 +14,7 @@ public class Carrinho {
         this.total = calcularTotal();
     }
 
-    public Carrinho adicionarItem(Produto2 produto, int quantidade) {
+    public Carrinho adicionarItem(Produto produto, int quantidade) {
         List<ItemCarrinho> novosItens = new ArrayList<>(itens);
         novosItens.add(new ItemCarrinho(produto, quantidade));
         return new Carrinho(novosItens);

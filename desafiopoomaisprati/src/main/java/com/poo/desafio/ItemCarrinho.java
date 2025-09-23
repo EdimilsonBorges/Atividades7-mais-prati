@@ -1,10 +1,10 @@
 package com.poo.desafio;
 
 class ItemCarrinho {
-    private final Produto2 produto;
+    private final Produto produto;
     private final int quantidade;
 
-    public ItemCarrinho(Produto2 produto, int quantidade) {
+    public ItemCarrinho(Produto produto, int quantidade) {
         if (quantidade <= 0) {
             throw new IllegalArgumentException("Quantidade deve ser maior que 0.");
         }
@@ -12,7 +12,7 @@ class ItemCarrinho {
         this.quantidade = quantidade;
     }
 
-    public Produto2 getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
