@@ -129,5 +129,35 @@ public class Main {
             }
             System.out.println("-------------------");
         }
+
+        // Teste da atividade 6
+        System.out.println("===============Teste da atividade 6===============");
+        Produto2 pr1 = new Produto2("Notebook", new Dinheiro(new BigDecimal("3500.00"), Moeda.BRL));
+        Produto2 pr2 = new Produto2("Mouse", new Dinheiro(new BigDecimal("150.00"), Moeda.BRL));
+
+        Carrinho carrinho = new Carrinho(List.of());
+
+        // Adicionando itens
+        carrinho = carrinho.adicionarItem(pr1, 1);
+        carrinho = carrinho.adicionarItem(pr2, 2);
+
+        System.out.println("Carrinho inicial:");
+        carrinho.getItens().forEach(i ->
+                System.out.println(i.getProduto().getNome() + " x" + i.getQuantidade() + " = " + i.getTotal())
+        );
+        System.out.println("Total: " + carrinho.getTotal());
+
+        // Aplicando cupom de 20%
+        carrinho = carrinho.aplicarCupom(new BigDecimal("0.20"));
+        System.out.println("\nApós aplicar cupom de 20%:");
+        System.out.println("Total com desconto: " + carrinho.getTotal());
+
+        // Removendo item
+        carrinho = carrinho.removerItem("Mouse");
+        System.out.println("\nApós remover Mouse:");
+        carrinho.getItens().forEach(i ->
+                System.out.println(i.getProduto().getNome() + " x" + i.getQuantidade() + " = " + i.getTotal())
+        );
+        System.out.println("Total: " + carrinho.getTotal());
     }
 }
